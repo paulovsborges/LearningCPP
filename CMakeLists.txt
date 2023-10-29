@@ -3,4 +3,5 @@ project(LearnC__)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(LearnC__ main.cpp)
+add_executable(LearnC__ code/main.cpp
+        code/namespace/namespaceDeclaration.cpp)
