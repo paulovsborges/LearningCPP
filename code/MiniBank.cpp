@@ -10,7 +10,7 @@ double withdraw(double amountToWithDraw, double currentBalance);
 
 void terminate();
 
-int main() {
+int startMiniBank() {
 
     double balance = 0;
 
