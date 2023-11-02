@@ -5,14 +5,6 @@
 
 using namespace std;
 
-void doSomething(string name);
-
-void bakePizza();
-
-void bakePizza(string topping1);
-
-int myNum = 1;
-
 int main() {
 
 /*
@@ -281,16 +273,4 @@ int main() {
 
 
     return 0;
-}
-
-void doSomething(string name) {
-    cout << "Hello" << name << endl;
-}
-
-void bakePizza() {
-    cout << "There is your pizza";
-}
-
-void bakePizza(string topping1) {
-    cout << "There is your pizza" << topping1;
 }
