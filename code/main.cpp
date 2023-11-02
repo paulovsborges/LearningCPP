@@ -6,7 +6,9 @@
 using namespace std;
 
 void doSomething(string name);
+
 void bakePizza();
+
 void bakePizza(string topping1);
 
 int myNum = 1;
@@ -252,19 +254,43 @@ int main() {
     bakePizza();
 
     cout << ::myNum;
+
+    string cars[] = {"Corvette", "AMG GT", "GT3 RS"};
+
+    cars[0] = "Camaro";
+
+    cout << cars[0] << endl;
+    cout << cars[1] << endl;
+
+    double prices[] = {5.60, 7.50, 99.99, 15.00};
+
+    for (int i = 0; i <= sizeof(prices) / sizeof(double); i++) {
+        cout << prices[i] << endl;
+    }
+
+    cout << sizeof(prices) << " Bytes" << endl;
+
+    cout << sizeof(prices) / sizeof(double) << " elements in the array" << endl;
+
+    string students[] = {"Spongebob", "Patrick", "Squirrel"};
+
+    for(string student : students){
+        cout << student << endl;
+    }
 */
+
 
     return 0;
 }
 
 void doSomething(string name) {
-    cout << "Hello"<< name << endl;
+    cout << "Hello" << name << endl;
 }
 
-void bakePizza(){
+void bakePizza() {
     cout << "There is your pizza";
 }
 
-void bakePizza(string topping1){
+void bakePizza(string topping1) {
     cout << "There is your pizza" << topping1;
 }
