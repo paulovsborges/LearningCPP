@@ -8,4 +8,5 @@ add_executable(LearnC__ code/main.cpp
         code/typeDefDeclaration.cpp
         code/MiniBank.cpp
         code/RockPaperScissors.cpp
+        code/SortAlgorithms.cpp
 )

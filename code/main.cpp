@@ -5,6 +5,19 @@
 
 using namespace std;
 
+/*
+int getTotal(int prices[], int size) {
+
+    int total = 0;
+
+    for (int i = 0; i < size; i++) {
+        total += prices[i];
+    }
+
+    return total;
+}
+ */
+
 int main() {
 
 /*
@@ -45,7 +58,7 @@ int main() {
 
     cout << "state tax = " << paidStateTax << endl;
     cout << "county tax = " << paidCountyTax << endl;
-    cout << "total paid in tax = " << totalPaidTax << endl;
+    cout << "getTotal paid in tax = " << totalPaidTax << endl;
     cout << "final revenue = " << totalSales;
 
     cout << "Enter values for x and y:";
@@ -269,8 +282,13 @@ int main() {
     for(string student : students){
         cout << student << endl;
     }
-*/
 
+    int prices[] = {1, 2, 3, 4};
+    int size = sizeof(prices) / sizeof(prices[0]);
+    int total = getTotal(prices, size);
+
+    cout << "total " << total << endl;
+*/
 
     return 0;
 }
