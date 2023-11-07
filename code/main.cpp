@@ -16,7 +16,23 @@ int getTotal(int prices[], int size) {
 
     return total;
 }
+
+
+// Pass by reference
+void swap(string &x, string &y){
+    string temp;
+
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+void constParameters(const string naming, const int age) {
+    cout << naming << endl;
+    cout << age << endl;
+}
  */
+
 
 int main() {
 
@@ -288,7 +304,69 @@ int main() {
     int total = getTotal(prices, size);
 
     cout << "total " << total << endl;
+
+    int numbers[10];
+
+    fill(numbers, numbers + 10, 1);
+
+    for(int n : numbers){
+        cout << n << endl;
+    }
+
+    const int SIZE =  99 ;
+    int portion = SIZE / 3;
+
+    int numbers[99];
+
+    // First portion
+    fill(numbers, numbers + portion, 1);
+    // Second portion
+    fill(numbers + portion, numbers + (portion * 2), 2);
+    // Third portion
+    fill(numbers + (portion * 2), numbers + SIZE, 3);
+
+    for (int n:numbers) {
+        cout << n << endl;
+    }
+
+
+    // Multidimensional arrays
+
+    // [Column] [Row]
+    string cars[][3] = {{"Mustang", "Raptor", "Focus"},
+                        {"Camaro", "Silverado", "Sonic"}};
+
+    // [Column] [Row]
+
+    int rows = sizeof (cars) / sizeof(cars[0]);
+    int columns = sizeof (cars[0]) / sizeof (cars[0][0]);
+
+    cout << cars[1][2] << endl;
+    cout << "Rows " << rows << endl;
+    cout << "Columns " << columns << endl;
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < columns; ++j) {\
+            cout << "Row " << i << " = " << cars[i][j] << endl;
+        }
+    }
+
+    string name = "Blaaaaaa";
+
+    // & = Address-of operator
+
+    cout << &name;
+
+    string x = "Hello";
+    string y = "Goodbye";
+
+    swap(x, y);
+
+    cout << x << endl;
+    cout << y << endl;
 */
+
+
 
     return 0;
 }
