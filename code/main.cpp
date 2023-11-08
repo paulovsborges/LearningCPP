@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include "creditCardValidator/CreditCardValidator.h"
 
 using namespace std;
 
@@ -364,9 +365,15 @@ int main() {
 
     cout << x << endl;
     cout << y << endl;
+
+    string cardNumberSample = "6011000990139424";
+    string result;
+
+    CreditCardValidator validator;
+    validator.validate(cardNumberSample, result);
+
+    cout << result;
 */
-
-
 
     return 0;
 }

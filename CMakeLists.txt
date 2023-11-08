@@ -9,4 +9,6 @@ add_executable(LearnC__ code/main.cpp
         code/MiniBank.cpp
         code/RockPaperScissors.cpp
         code/SortAlgorithms.cpp
+        code/creditCardValidator/CreditCardValidator.h
+        code/creditCardValidator/CreditCardValidator.cpp
 )
