@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "creditCardValidator/CreditCardValidator.h"
+#include "ticTacToeGame/TicTacToeGame.h"
 
 using namespace std;
 
@@ -333,11 +334,11 @@ int main() {
 
     // Multidimensional arrays
 
-    // [Column] [Row]
+    // [Row] [Column]
     string cars[][3] = {{"Mustang", "Raptor", "Focus"},
                         {"Camaro", "Silverado", "Sonic"}};
 
-    // [Column] [Row]
+    // [Row] [Column]
 
     int rows = sizeof (cars) / sizeof(cars[0]);
     int columns = sizeof (cars[0]) / sizeof (cars[0][0]);
@@ -373,6 +374,56 @@ int main() {
     validator.validate(cardNumberSample, result);
 
     cout << result;
+
+    // * dereference operator
+
+    string name = "Bla";
+    string *pName = &name;
+
+    int age = 21;
+    int *pAge = &age;
+
+    string pizzas[] = {
+            "Pizza 1",
+            "Pizza 2",
+            "Pizza 3",
+            "Pizza 4",
+            "pizza 5"
+    };
+
+    string *pPizzas = pizzas;
+
+
+    cout << pName; // Access the reference
+    cout << *pName; // Access the value inside of this reference
+
+    cout << endl;
+
+    cout << *pAge;
+
+    cout << endl;
+
+    cout << "Free pizzas " << pPizzas << endl;
+    cout << "Free pizzas " << *pPizzas << endl;
+    cout << "Free pizzas " << pPizzas[1] << endl;
+
+    // nullptr - null pointer literal
+
+    int *pointer = nullptr;
+
+    int x = 123;
+
+    pointer = &x;
+
+    if (pointer == nullptr) {
+        cout << "Pointer not assigned";
+    } else {
+        cout << "Pointer assigned" << endl;
+        cout << *pointer;
+    }
+
+    TicTacToeGame game;
+    game.start();
 */
 
     return 0;

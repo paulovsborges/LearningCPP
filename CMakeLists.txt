@@ -11,4 +11,6 @@ add_executable(LearnC__ code/main.cpp
         code/SortAlgorithms.cpp
         code/creditCardValidator/CreditCardValidator.h
         code/creditCardValidator/CreditCardValidator.cpp
+        code/ticTacToeGame/TicTacToeGame.h
+        code/ticTacToeGame/TicTacToeGame.cpp
 )
