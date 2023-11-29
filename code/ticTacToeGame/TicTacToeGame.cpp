@@ -1,20 +1,21 @@
-# include <ctime>
+#include <ctime>
 #include <iostream>
 #include "TicTacToeGame.h"
 
 using namespace std;
 
-void TicTacToeGame::start(){
+void TicTacToeGame::start()
+{
     char spaces[] = {
-            ' ',
-            ' ',
-            ' ',
-            ' ',
-            ' ',
-            ' ',
-            ' ',
-            ' ',
-            ' ',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
     };
 
     char player = 'X';
@@ -23,20 +24,24 @@ void TicTacToeGame::start(){
 
     drawBoard(spaces);
 
-    while (true) {
+    while (true)
+    {
         playerMove(spaces, player);
 
-        if (checkWinner(spaces, winner)) {
+        if (checkWinner(spaces, winner))
+        {
             break;
         }
 
         computerMove(spaces, computer);
 
-        if (checkWinner(spaces, winner)) {
+        if (checkWinner(spaces, winner))
+        {
             break;
         }
 
-        if (checkTie(spaces)) {
+        if (checkTie(spaces))
+        {
             break;
         }
         drawBoard(spaces);
@@ -44,14 +49,18 @@ void TicTacToeGame::start(){
 
     drawBoard(spaces);
 
-    if (winner == ' ') {
+    if (winner == ' ')
+    {
         cout << "There was a tie" << endl;
-    } else {
+    }
+    else
+    {
         cout << "The winner is " << winner;
     }
 }
 
-void TicTacToeGame::drawBoard(char *spaces) {
+void TicTacToeGame::drawBoard(char *spaces)
+{
 
     cout << endl;
     cout << "     |     |     " << endl;
@@ -65,15 +74,18 @@ void TicTacToeGame::drawBoard(char *spaces) {
     cout << endl;
 }
 
-void TicTacToeGame::playerMove(char *spaces, char player) {
+void TicTacToeGame::playerMove(char *spaces, char player)
+{
 
     int number;
 
-    do {
+    do
+    {
         cout << "Enter a number (1-9)";
         cin >> number;
         number--;
-        if (spaces[number] == ' ') {
+        if (spaces[number] == ' ')
+        {
             spaces[number] = player;
             break;
         }
@@ -81,28 +93,32 @@ void TicTacToeGame::playerMove(char *spaces, char player) {
     } while (!number > 0 || !number < 8);
 }
 
-void TicTacToeGame::computerMove(char *spaces, char computer) {
+void TicTacToeGame::computerMove(char *spaces, char computer)
+{
     int number;
     srand(time(0));
 
     bool checkEmptySpaces = checkTie(spaces);
 
-    while (!checkEmptySpaces) {
+    while (!checkEmptySpaces)
+    {
         number = rand() % 9;
 
-        if (spaces[number] == ' ') {
+        if (spaces[number] == ' ')
+        {
             spaces[number] = computer;
             break;
         }
     }
 }
 
-bool TicTacToeGame::checkWinner(char *spaces, char &winner) {
+bool TicTacToeGame::checkWinner(char *spaces, char &winner)
+{
 
     char board[3][3] = {
-            {spaces[0], spaces[1], spaces[2]},
-            {spaces[3], spaces[4], spaces[5]},
-            {spaces[6], spaces[7], spaces[8]},
+        {spaces[0], spaces[1], spaces[2]},
+        {spaces[3], spaces[4], spaces[5]},
+        {spaces[6], spaces[7], spaces[8]},
     };
 
     int rows = sizeof(board) / sizeof(board[0]);
@@ -110,63 +126,65 @@ bool TicTacToeGame::checkWinner(char *spaces, char &winner) {
 
     bool anyRowsTheSame = false;
 
-    for (int row = 0; row < rows; ++row) {
+    for (int row = 0; row < rows; ++row)
+    {
 
         bool anyRowsEmpty = board[row][0] == ' ' ||
                             board[row][1] == ' ' ||
                             board[row][2] == ' ';
 
-        if (anyRowsEmpty) {
+        if (anyRowsEmpty)
+        {
             continue;
         }
 
         anyRowsTheSame = board[row][0] == board[row][1] &&
                          board[row][1] == board[row][2];
 
-        if (anyRowsTheSame) {
+        if (anyRowsTheSame)
+        {
             winner = board[row][0];
         }
     }
 
-    if (anyRowsTheSame) {
+    if (anyRowsTheSame)
+    {
         return true;
     }
 
     bool anyColumnsTheSame = false;
 
-    for (int column = 0; column < columns; ++column) {
+    for (int column = 0; column < columns; ++column)
+    {
 
         bool anyColumnEmpty = board[0][column] == ' ' ||
                               board[1][column] == ' ' ||
                               board[2][column] == ' ';
 
-        if (anyColumnEmpty) {
+        if (anyColumnEmpty)
+        {
             continue;
         }
 
         anyColumnsTheSame = board[0][column] == board[1][column] &&
                             board[1][column] == board[2][column];
 
-        if (anyColumnsTheSame) {
+        if (anyColumnsTheSame)
+        {
             winner = board[0][column];
         }
     }
 
-    if (anyColumnsTheSame) {
+    if (anyColumnsTheSame)
+    {
         return true;
     }
 
-    bool anyDiagonalTheSameAndNotEmpty = spaces[0] == spaces[4] && spaces[4] == spaces[8]
-                                         && spaces[0] != ' '
-                                         && spaces[4] != ' '
-                                         && spaces[8] != ' '
-                                         ||
-                                         spaces[6] == spaces[4] && spaces[4] == spaces[2]
-                                         && spaces[6] != ' '
-                                         && spaces[4] != ' '
-                                         && spaces[2] != ' ';
+    bool anyDiagonalTheSameAndNotEmpty = spaces[0] == spaces[4] && spaces[4] == spaces[8] && spaces[0] != ' ' && spaces[4] != ' ' && spaces[8] != ' ' ||
+                                         spaces[6] == spaces[4] && spaces[4] == spaces[2] && spaces[6] != ' ' && spaces[4] != ' ' && spaces[2] != ' ';
 
-    if (anyDiagonalTheSameAndNotEmpty) {
+    if (anyDiagonalTheSameAndNotEmpty)
+    {
         winner = spaces[4];
         return true;
     }
@@ -174,14 +192,17 @@ bool TicTacToeGame::checkWinner(char *spaces, char &winner) {
     return false;
 }
 
-bool TicTacToeGame::checkTie(char *spaces) {
+bool TicTacToeGame::checkTie(char *spaces)
+{
     int size = sizeof(spaces) / sizeof(spaces[0]);
 
-    bool allElementsFilled= true;
+    bool allElementsFilled = true;
 
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
+    {
 
-        if (spaces[i] == ' '){
+        if (spaces[i] == ' ')
+        {
             cout << "Found an element not filled" << endl;
             allElementsFilled = false;
             break;
@@ -192,4 +213,3 @@ bool TicTacToeGame::checkTie(char *spaces) {
 
     return allElementsFilled;
 }
-
