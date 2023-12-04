@@ -7,6 +7,61 @@
 
 using namespace std;
 
+void walk(int steps) {
+    //    iterative approach
+//    for (int i = 0; i < steps; ++i) {
+//        cout <<  "You take a step" << endl;
+//    }
+
+    //Recursive approach
+    if (steps > 0) {
+        cout << "You take a step" << endl;
+        walk(steps - 1);
+    }
+}
+
+int factorial(int startNumber) {
+//Iterative approach
+//    int result = 1;
+//
+//    for (int i = 1; i <= startNumber; ++i) {
+//        result = result * i;
+//    }
+//
+//    return result;
+
+//recursive approach
+// Slower and uses more memory
+    if (startNumber > 1) {
+        return startNumber * factorial(startNumber - 1);
+    } else {
+        return 1;
+    }
+}
+
+int max(int x, int y) {
+    return (x > y) ? x : y;
+}
+
+// Function template, seams like the generics???
+template<typename T, typename U>
+
+auto max(T x, U y) {
+    return (x > y) ? x : y;
+}
+
+struct student {
+    string name;
+    double gpa;
+    bool enrolled;
+};
+
+struct Car {
+    string model;
+    int year;
+    string color;
+};
+
 /*
 int getTotal(int prices[], int size) {
 
@@ -35,6 +90,173 @@ void constParameters(const string naming, const int age) {
 }
  */
 
+void printCar(const Car car) {
+    cout << "Model: " << car.model << endl;
+    cout << "Year: " << car.year << endl;
+    cout << "color: " << car.color << endl;
+    cout << "inside" << &car << endl;
+}
+
+void paintCar(Car &car, string color) {
+    car.color = color;
+}
+
+enum ResponseType {
+    success, error, unknown
+};
+
+ResponseType getRandomEnum() {
+    srand(time(nullptr));
+    int maxValue = 3;
+    int minValue = 1;
+
+    int result = (rand() % (maxValue - minValue + 1)) + minValue;
+
+    switch (result) {
+        case 1 :
+            return success;
+        case 2 :
+            return error;
+        default :
+            return unknown;
+    }
+}
+
+class Human {
+public:
+    string name;
+    string occupation;
+    int age;
+
+    void eat() {
+        cout << "This person is eating" << endl;
+    }
+
+    void drink() {
+        cout << "This person is drinking" << endl;
+    }
+
+    void sleep() {
+        cout << "This person is sleeping" << endl;
+    }
+};
+
+
+class Student {
+
+public:
+    string name;
+    int age;
+    double gpa;
+
+    Student(string name, int age, double gpa) {
+        this->name = name;
+        this->age = age;
+        this->gpa = gpa;
+    }
+
+};
+
+
+class Pizza {
+public:
+    string topping1;
+    string topping2;
+
+    // Constructor overload
+
+    Pizza() {
+    }
+
+    Pizza(string topping1) {
+        this->topping1 = topping1;
+    }
+
+    Pizza(string topping1, string topping2) {
+        this->topping1 = topping1;
+        this->topping2 = topping2;
+    }
+};
+
+class Stove {
+
+    // Getter and setter
+
+public:
+
+    Stove(int temperature) {
+        set(temperature);
+    }
+
+    int getTemperature() {
+        return temperature;
+    }
+
+    void set(int newTemp) {
+
+        if (temperature < 0) {
+            temperature = 0;
+            return;
+        }
+
+        if (temperature >= 10) {
+            temperature = 10;
+            return;
+        }
+
+        temperature = newTemp;
+    }
+
+private:
+    int temperature = 0;
+
+};
+
+//Inheritance
+
+class Animal {
+public:
+    bool alive = true;
+
+    void eat() {
+        cout << "Is eating" << endl;
+    }
+};
+
+class Dog : public Animal {
+
+};
+
+class Shape {
+public:
+    double area;
+    double volume;
+};
+
+class Cube : public Shape {
+public:
+    double side;
+
+    Cube(double side) {
+        this->side = side;
+        this->area = pow(side, 2) * 6;
+        this->volume = pow(side, 3);
+    }
+
+};
+
+class Sphere : public Shape {
+public:
+    double radius;
+
+    const double PI = 3.14;
+
+    Sphere(double radius) {
+        this->radius = radius;
+        this->area = 4.0 * PI * (pow(radius, 2));
+        this->volume = (4 / 3.0) * PI * pow(radius, 3);
+    }
+};
 
 int main() {
 
@@ -424,6 +646,119 @@ int main() {
 
     TicTacToeGame game;
     game.start();
+
+    //Dynamic memory =============
+
+    int *pNum = nullptr;
+
+    pNum = new int;
+    *pNum  = 21;
+
+    cout << "Address : "<< pNum << endl;
+    cout << "Value : "<< *pNum << endl;
+
+    delete pNum;
+
+    cout << "Address after delete : "<< pNum << endl;
+
+    char *pGrade = nullptr;
+
+    int size;
+
+    cout << "How much?" << endl;
+
+    cin >> size;
+
+    pGrade = new char[size];
+
+    for (int i = 0; i < size; ++i) {
+        cout << "Enter grade # " << i + 1 << ": " << endl;
+        cin  >> pGrade[i];
+    }
+
+    for (int i = 0; i < size; ++i) {
+        cout << pGrade[i] << " - ";
+    }
+
+    // Deallocate memory
+    delete pGrade;
+
+    //Recursion
+    walk(100);
+
+    cout << factorial(10);
+
+// Function template =========
+
+    cout << max(1, 2.2);
+
+//Structs
+
+    student student1;
+    student1.name = "Sponge bob";
+    student1.gpa = 3.2;
+    student1.enrolled = true;
+
+    student student2;
+    student2.name = "Patrick";
+    student2.gpa = 2.1;
+    student2.enrolled = true;
+
+    cout << student1.name << endl;
+    cout << student1.gpa << endl;
+    cout << student1.enrolled << endl;
+
+
+    Car car1;
+    car1.model = "Tesla";
+    car1.year = 2020;
+    car1.color = "silver";
+
+    Car car2;
+    car2.model = "Opala";
+    car2.year = 1969;
+    car2.color = "orange";
+
+    cout << "Outside" << &car2 << endl;
+    printCar(car2);
+
+    paintCar(car2, "black");
+
+    cout << "New color is" << car2.color;
+
+    // ENUMS ===========
+
+    ResponseType response = getRandomEnum();
+
+    switch (response) {
+        case success:
+            cout << "Success response" << endl;
+            break;
+        case error:
+            cout << "Error response" << endl;
+            break;
+        case unknown:
+            cout << "Unknown response" << endl;
+            break;
+    }
+
+    //OOP =============
+
+    Human human1;
+
+    human1.name = "Patrick";
+    human1.occupation = "dont know";
+    human1.age = 21;
+
+    human1.drink();
+
+    Student student1("patrick", 25, 3.2);
+
+    Sphere sphere(5);
+
+    Cube cube(10);
+    cout << sphere.area << endl;
+    cout << sphere.volume << endl;
 */
 
     return 0;
