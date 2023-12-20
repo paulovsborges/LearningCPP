@@ -4,6 +4,7 @@
 #include <ctime>
 #include "creditCardValidator/CreditCardValidator.h"
 #include "ticTacToeGame/TicTacToeGame.h"
+#include "amplitude/AmplitudeConversions.h"
 
 using namespace std;
 
@@ -759,7 +760,41 @@ int main() {
     Cube cube(10);
     cout << sphere.area << endl;
     cout << sphere.volume << endl;
+
+    int16_t a; // Signed int with fixed width == 2 bytes with 8 bit in width -> signed can store both negative and positive value
+    uint16_t b; // Unsigned int with fixed width == 2 bytes with 8 bit in width -> unsigned can store only positive values
+
+    unsigned char c = 'c';
+    auto d = static_cast<int>(c);
+
+    cout << d;
+
+    unsigned char usersChar;
+
+    cout << "Enter a number";
+
+    int charAsc;
+
+    cin >> usersChar;
+
+    charAsc = static_cast<int>(usersChar);
+
+    cout << "You chose the letter '" << usersChar << "' and the corresponding value in ASCII is "<< charAsc << endl;
+
+    // constant expression - will force the compiler to not perform any optimization on this variable and will consider as a compile time constant
+    constexpr int constantExpression = 2;
+
+    //If we try to initialize the variable with a non-constant expression, the compiler will throw an error
+    constexpr int t = max(1, 2);
 */
+
+    // Amplitudes conversions
+    auto converter = new AmplitudeConverter(-30.f, 0.0316228f);
+    float db = converter->fromAmplitudeToDb();
+    float amplitude = converter->fromDbToAmplitude();
+
+    cout << converter->amplitude << " of amplitude is equal to " << db << " Db" << endl;
+    cout << converter->db << " db is equal to " << amplitude << " in amplitude";
 
     return 0;
 }

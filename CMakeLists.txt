@@ -13,4 +13,6 @@ add_executable(LearnC__ code/main.cpp
         code/creditCardValidator/CreditCardValidator.cpp
         code/ticTacToeGame/TicTacToeGame.h
         code/ticTacToeGame/TicTacToeGame.cpp
+        code/amplitude/AmplitudeConversions.h
+        code/amplitude/AmplitudeConversions.cpp
 )
